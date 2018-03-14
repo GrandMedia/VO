@@ -22,7 +22,7 @@ final class EmailTest extends \Tester\TestCase
 	{
 		$email = Email::from(self::VALID_EMAIL);
 
-		Assert::same(self::VALID_EMAIL, $email->getValue());
+		Assert::same(self::VALID_EMAIL, (string) $email);
 	}
 
 	public function testInvalidEmail(): void
@@ -35,13 +35,6 @@ final class EmailTest extends \Tester\TestCase
 			null,
 			Assertion::INVALID_EMAIL
 		);
-	}
-
-	public function testToString(): void
-	{
-		$email = Email::from(self::VALID_EMAIL);
-
-		Assert::same(self::VALID_EMAIL, (string) $email);
 	}
 
 }
