@@ -34,7 +34,7 @@ final class PasswordTest extends \Tester\TestCase
 	{
 		$password = Password::fromHash(self::HASH);
 
-		Assert::true($password->verify(self::PASSWORD));
+		Assert::same(self::HASH, (string) $password);
 	}
 
 	public function testFromPlainText(): void

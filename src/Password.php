@@ -39,4 +39,9 @@ final class Password
 		return \password_verify($value, $this->hash);
 	}
 
+	public function __toString(): string
+	{
+		return $this->hash;
+	}
+
 }
