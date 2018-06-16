@@ -7,7 +7,9 @@ use Assert\Assertion;
 final class Country
 {
 
-	/** @var string */
+	/**
+	 * @var string
+	 */
 	private $code;
 
 	private function __construct()

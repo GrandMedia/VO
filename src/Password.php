@@ -8,7 +8,9 @@ use GrandMedia\VO\Exceptions\InvalidHash;
 final class Password
 {
 
-	/** @var string */
+	/**
+	 * @var string
+	 */
 	private $hash;
 
 	private function __construct()

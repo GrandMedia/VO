@@ -7,16 +7,24 @@ use Assert\Assertion;
 final class Address
 {
 
-	/** @var string */
+	/**
+	 * @var string
+	 */
 	private $street;
 
-	/** @var string */
+	/**
+	 * @var string
+	 */
 	private $city;
 
-	/** @var string */
+	/**
+	 * @var string
+	 */
 	private $postCode;
 
-	/** @var \GrandMedia\VO\Country */
+	/**
+	 * @var \GrandMedia\VO\Country
+	 */
 	private $country;
 
 	private function __construct()
