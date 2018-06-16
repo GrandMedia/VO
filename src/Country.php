@@ -10,16 +10,18 @@ final class Country
 	/** @var string */
 	private $code;
 
-	private function __construct(string $code)
+	private function __construct()
 	{
-		Assertion::length($code, 2, 'Country code has to be 2 exactly characters long');
-
-		$this->code = $code;
 	}
 
 	public static function fromCode(string $code): self
 	{
-		return new self($code);
+		Assertion::length($code, 2, 'Country code has to be exactly 2 characters long.');
+
+		$country = new self();
+		$country->code = $code;
+
+		return $country;
 	}
 
 	public function getCode(): string

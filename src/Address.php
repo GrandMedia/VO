@@ -19,21 +19,23 @@ final class Address
 	/** @var \GrandMedia\VO\Country */
 	private $country;
 
-	private function __construct(string $street, string $city, string $postCode, Country $country)
+	private function __construct()
+	{
+	}
+
+	public static function from(string $street, string $city, string $postCode, Country $country): self
 	{
 		Assertion::notBlank($street);
 		Assertion::notBlank($city);
 		Assertion::notBlank($postCode);
 
-		$this->street = $street;
-		$this->city = $city;
-		$this->postCode = $postCode;
-		$this->country = $country;
-	}
+		$address = new self();
+		$address->street = $street;
+		$address->city = $city;
+		$address->postCode = $postCode;
+		$address->country = $country;
 
-	public static function from(string $street, string $city, string $postCode, Country $country): self
-	{
-		return new self($street, $city, $postCode, $country);
+		return $address;
 	}
 
 	public function getStreet(): string

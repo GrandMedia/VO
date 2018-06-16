@@ -10,16 +10,18 @@ final class Email
 	/** @var string */
 	private $value;
 
-	private function __construct(string $value)
+	private function __construct()
 	{
-		Assertion::email($value);
-
-		$this->value = $value;
 	}
 
 	public static function from(string $value): self
 	{
-		return new self($value);
+		Assertion::email($value);
+
+		$email = new self();
+		$email->value = $value;
+
+		return $email;
 	}
 
 	public function __toString(): string

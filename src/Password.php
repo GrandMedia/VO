@@ -11,27 +11,29 @@ final class Password
 	/** @var string */
 	private $hash;
 
-	private function __construct(string $hash)
+	private function __construct()
 	{
-		Assertion::notBlank($hash);
-
-		$this->hash = $hash;
 	}
 
 	public static function fromHash(string $hash): self
 	{
-		return new self($hash);
+		Assertion::notBlank($hash);
+
+		$password = new self();
+		$password->hash = $hash;
+
+		return $password;
 	}
 
 	public static function fromPlainText(string $value): self
 	{
 		$hash = \password_hash($value, \PASSWORD_BCRYPT);
 
-		if ($hash === false || strlen($hash) < 60) {
+		if ($hash === false || \strlen($hash) < 60) {
 			throw new InvalidHash('Hash computed by password_hash is invalid.');
 		}
 
-		return new self($hash);
+		return self::fromHash($hash);
 	}
 
 	public function verify(string $value): bool
