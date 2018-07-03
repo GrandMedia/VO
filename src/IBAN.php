@@ -32,7 +32,8 @@ final class IBAN
 
 	public function toReadable(): string
 	{
-		return \implode(' ', \str_split($this->value, 4));
+		/** @noinspection UnnecessaryCastingInspection */
+		return \implode(' ', (array) \str_split($this->value, 4));
 	}
 
 	public function __toString(): string
