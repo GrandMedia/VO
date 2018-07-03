@@ -15,11 +15,11 @@ require_once __DIR__ . '/../bootstrap.php';
 final class CzechBankAccountTest extends \Tester\TestCase
 {
 
-	private const VALID_PREFIX = '1234 ';
+	private const VALID_PREFIX = '1234';
 	private const INVALID_PREFIX = 'not prefix';
-	private const VALID_NUMBER = '123 456';
+	private const VALID_NUMBER = '123456';
 	private const INVALID_NUMBER = 'not number';
-	private const VALID_BANK_CODE = '1234 ';
+	private const VALID_BANK_CODE = '1234';
 	private const INVALID_BANK_CODE = 'not bank code';
 	private const VALID_BANK_ACCOUNT_NUMBER = '1234-123456/1234';
 

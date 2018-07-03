@@ -32,14 +32,6 @@ final class CzechBankAccountNumber
 
 	public static function fromValues(string $prefix, string $number, string $bankCode): self
 	{
-		$removeWhitespaces = function (string $string): string {
-			return \preg_replace('/\s+/', '', $string);
-		};
-
-		$prefix = $removeWhitespaces($prefix);
-		$number = $removeWhitespaces($number);
-		$bankCode = $removeWhitespaces($bankCode);
-
 		Assertion::regex($prefix, \sprintf('/^%s$/', self::PREFIX_FORMAT));
 		Assertion::regex($number, \sprintf('/^%s$/', self::NUMBER_FORMAT));
 		Assertion::regex($bankCode, \sprintf('/^%s$/', self::BANK_CODE_FORMAT));
