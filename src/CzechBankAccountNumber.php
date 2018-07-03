@@ -10,6 +10,7 @@ final class CzechBankAccountNumber
 	public const PREFIX_FORMAT = '\d{0,6}';
 	public const NUMBER_FORMAT = '\d{1,10}';
 	public const BANK_CODE_FORMAT = '\d{4}';
+	public const ACCOUNT_NUMBER_FORMAT = '((' . self::PREFIX_FORMAT . ')-)?(' . self::NUMBER_FORMAT . ')/(' . self::BANK_CODE_FORMAT . ')';
 
 	/**
 	 * @var string
@@ -28,6 +29,23 @@ final class CzechBankAccountNumber
 
 	private function __construct()
 	{
+	}
+
+	public static function fromString(string $string): self
+	{
+		$pattern = \sprintf('#^%s$#', self::ACCOUNT_NUMBER_FORMAT);
+
+		Assertion::regex($string, $pattern);
+
+		\preg_match($pattern, $string, $matches);
+
+		$accountNumber = new self();
+
+		$accountNumber->prefix = $matches[2];
+		$accountNumber->number = $matches[3];
+		$accountNumber->bankCode = $matches[4];
+
+		return $accountNumber;
 	}
 
 	public static function fromValues(string $prefix, string $number, string $bankCode): self
