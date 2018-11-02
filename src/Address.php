@@ -10,6 +10,11 @@ final class Address
 	/**
 	 * @var string
 	 */
+	private $name;
+
+	/**
+	 * @var string
+	 */
 	private $street;
 
 	/**
@@ -31,19 +36,26 @@ final class Address
 	{
 	}
 
-	public static function from(string $street, string $city, string $postCode, Country $country): self
+	public static function from(string $name, string $street, string $city, string $postCode, Country $country): self
 	{
+		Assertion::notBlank($name);
 		Assertion::notBlank($street);
 		Assertion::notBlank($city);
 		Assertion::notBlank($postCode);
 
 		$address = new self();
+		$address->name = $name;
 		$address->street = $street;
 		$address->city = $city;
 		$address->postCode = $postCode;
 		$address->country = $country;
 
 		return $address;
+	}
+
+	public function getName(): string
+	{
+		return $this->name;
 	}
 
 	public function getStreet(): string
