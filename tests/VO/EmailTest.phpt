@@ -37,6 +37,13 @@ final class EmailTest extends \Tester\TestCase
 		);
 	}
 
+	public function testCastToLower(): void
+	{
+		$email = Email::from('Foo@Bar.Cz');
+
+		Assert::same(self::VALID_EMAIL, (string) $email);
+	}
+
 }
 
 (new EmailTest())->run();

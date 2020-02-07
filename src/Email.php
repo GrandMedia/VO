@@ -18,6 +18,7 @@ final class Email
 
 	public static function from(string $value): self
 	{
+		$value = \strtolower($value);
 		Assertion::email($value);
 
 		$email = new self();
